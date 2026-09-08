@@ -6,7 +6,8 @@
     "lon": 73.862320157282,
     "status": "confirmed",
     "confidence": 0.691,
-    "heading": 356
+    "heading": 356,
+    "photo_url": "https://www.mapillary.com/app/?pKey=172095134791857"
   },
   {
     "id": "cf7079c2-d7d",
@@ -15,7 +16,8 @@
     "lon": 73.863463381744,
     "status": "confirmed",
     "confidence": 0.679,
-    "heading": 336
+    "heading": 336,
+    "photo_url": "https://www.mapillary.com/app/?pKey=4512042082145388"
   },
   {
     "id": "98045bad-257",
@@ -24,7 +26,8 @@
     "lon": 73.862345543813,
     "status": "confirmed",
     "confidence": 0.662,
-    "heading": 4
+    "heading": 4,
+    "photo_url": "https://www.mapillary.com/app/?pKey=503016854074357"
   },
   {
     "id": "29099bfa-de2",
@@ -33,7 +36,8 @@
     "lon": 73.862414951852,
     "status": "confirmed",
     "confidence": 0.652,
-    "heading": 353
+    "heading": 353,
+    "photo_url": "https://www.mapillary.com/app/?pKey=973364723403931"
   },
   {
     "id": "9e4ca91a-682",
@@ -42,7 +46,8 @@
     "lon": 73.861082657885,
     "status": "confirmed",
     "confidence": 0.649,
-    "heading": 275
+    "heading": 275,
+    "photo_url": "https://www.mapillary.com/app/?pKey=255419616329761"
   },
   {
     "id": "9fe75831-46a",
@@ -51,7 +56,8 @@
     "lon": 73.862303710619,
     "status": "confirmed",
     "confidence": 0.631,
-    "heading": 351
+    "heading": 351,
+    "photo_url": "https://www.mapillary.com/app/?pKey=310393700454417"
   },
   {
     "id": "6e9fe259-731",
@@ -60,7 +66,8 @@
     "lon": 73.861366847061,
     "status": "confirmed",
     "confidence": 0.597,
-    "heading": 319
+    "heading": 319,
+    "photo_url": "https://www.mapillary.com/app/?pKey=1393299064369870"
   },
   {
     "id": "9c9a4e30-7cf",
@@ -69,7 +76,8 @@
     "lon": 73.858334668006,
     "status": "confirmed",
     "confidence": 0.582,
-    "heading": 264
+    "heading": 264,
+    "photo_url": "https://www.mapillary.com/app/?pKey=258227855779876"
   },
   {
     "id": "5320264b-337",
@@ -78,7 +86,8 @@
     "lon": 73.858137793036,
     "status": "confirmed",
     "confidence": 0.58,
-    "heading": 163
+    "heading": 163,
+    "photo_url": "https://www.mapillary.com/app/?pKey=318674196293064"
   },
   {
     "id": "fa9dac6e-ad5",
@@ -87,7 +96,8 @@
     "lon": 73.859383824291,
     "status": "confirmed",
     "confidence": 0.575,
-    "heading": 263
+    "heading": 263,
+    "photo_url": "https://www.mapillary.com/app/?pKey=1201156206981076"
   },
   {
     "id": "a09e2161-6bf",
@@ -96,7 +106,8 @@
     "lon": 73.86245656,
     "status": "confirmed",
     "confidence": 0.569,
-    "heading": 158
+    "heading": 158,
+    "photo_url": "https://www.mapillary.com/app/?pKey=299193431921088"
   },
   {
     "id": "884cbcc1-d65",
@@ -105,7 +116,8 @@
     "lon": 73.858057435449,
     "status": "confirmed",
     "confidence": 0.555,
-    "heading": 154
+    "heading": 154,
+    "photo_url": "https://www.mapillary.com/app/?pKey=267033215105455"
   },
   {
     "id": "2427af78-11c",
@@ -114,7 +126,8 @@
     "lon": 73.858181174343,
     "status": "confirmed",
     "confidence": 0.541,
-    "heading": 163
+    "heading": 163,
+    "photo_url": "https://www.mapillary.com/app/?pKey=368798647892947"
   },
   {
     "id": "91964863-6e8",
@@ -123,7 +136,8 @@
     "lon": 73.85923939975,
     "status": "confirmed",
     "confidence": 0.539,
-    "heading": 269
+    "heading": 269,
+    "photo_url": "https://www.mapillary.com/app/?pKey=377033363649473"
   },
   {
     "id": "46377d4c-295",
@@ -132,7 +146,8 @@
     "lon": 73.8624971062,
     "status": "confirmed",
     "confidence": 0.511,
-    "heading": 172
+    "heading": 172,
+    "photo_url": "https://www.mapillary.com/app/?pKey=861217854431136"
   },
   {
     "id": "1ff9d5fa-ca2",
@@ -141,6 +156,7 @@
     "lon": 73.858159695691,
     "status": "confirmed",
     "confidence": 0.449,
-    "heading": 267
+    "heading": 267,
+    "photo_url": "https://www.mapillary.com/app/?pKey=373881933968758"
   }
 ]

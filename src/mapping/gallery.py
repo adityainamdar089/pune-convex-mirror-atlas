@@ -338,6 +338,13 @@ def _make_card(mirror: MirrorRecord, processed_dir: Path | None) -> str:
     # Description / notes
     desc_html = f'<div class="card-description">"{mirror.description}"</div>' if mirror.description else ""
     notes_html = f'<div class="card-notes">📝 {mirror.notes}</div>' if mirror.notes else ""
+    photo_html = ""
+    if mirror.panorama_id:
+        photo_url = f"https://www.mapillary.com/app/?pKey={mirror.panorama_id}"
+        photo_html = (
+            f'<a href="{photo_url}" target="_blank" rel="noopener" '
+            'class="card-photo-link">View source photo on Mapillary</a>'
+        )
 
     return f"""
     <div class="card">
@@ -351,6 +358,7 @@ def _make_card(mirror: MirrorRecord, processed_dir: Path | None) -> str:
         {rating_html}
         {desc_html}
         {notes_html}
+        {photo_html}
         <div class="card-meta">Heading: {mirror.heading}° · Confidence: {mirror.confidence:.2f}</div>
       </div>
     </div>"""

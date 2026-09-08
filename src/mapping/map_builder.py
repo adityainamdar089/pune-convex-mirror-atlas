@@ -155,6 +155,7 @@ def build_map(
 
 
 import base64
+from html import escape
 
 def _find_img(ref: str) -> Path | None:
     if not ref:
@@ -184,6 +185,13 @@ def _make_popup(mirror: MirrorRecord, seq: str) -> str:
     rating_str = f"{mirror.rating}/10" if mirror.rating else "—"
     desc = mirror.description or "—"
     notes = mirror.notes or "—"
+    photo_link = ""
+    if mirror.panorama_id:
+        photo_url = f"https://www.mapillary.com/app/?pKey={escape(mirror.panorama_id)}"
+        photo_link = (
+            f'<br><a href="{photo_url}" target="_blank" rel="noopener">'
+            "View source photo on Mapillary</a>"
+        )
 
     img_html = ""
     img_file = _find_img(mirror.image_reference)
@@ -205,6 +213,7 @@ def _make_popup(mirror: MirrorRecord, seq: str) -> str:
         <b>Lon:</b> {mirror.longitude:.6f}<br>
         <b>Heading:</b> {mirror.heading}°<br>
         <b>Confidence:</b> {mirror.confidence:.2f}<br>
+        {photo_link}
         <hr style="margin:4px 0">
         <small style="color:grey;">
             Pano: {mirror.panorama_id or 'N/A'}

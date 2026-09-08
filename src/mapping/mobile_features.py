@@ -31,6 +31,10 @@ def _mirror_payload(mirrors: list[MirrorRecord]) -> list[dict]:
             "status": m.status,
             "confidence": round(m.confidence, 3),
             "heading": m.heading,
+            "photo_url": (
+                f"https://www.mapillary.com/app/?pKey={m.panorama_id}"
+                if m.panorama_id else ""
+            ),
         })
     return payload
 
@@ -172,7 +176,9 @@ _MOBILE_JS_TEMPLATE = """
     document.getElementById('pm-dist').textContent = formatDist(distance);
     document.getElementById('pm-meta').innerHTML =
       'Status: <b>' + mirror.status + '</b> &middot; Confidence: ' + mirror.confidence +
-      '<br>Heading: ' + mirror.heading + '&deg;';
+      '<br>Heading: ' + mirror.heading + '&deg;' +
+      (mirror.photo_url ? '<br><a href="' + mirror.photo_url +
+        '" target="_blank" rel="noopener">View source photo</a>' : '');
     const navUrl = 'https://www.google.com/maps/dir/?api=1&origin=' +
       lat + ',' + lon + '&destination=' + mirror.lat + ',' + mirror.lon + '&travelmode=walking';
     document.getElementById('pm-nav').href = navUrl;
