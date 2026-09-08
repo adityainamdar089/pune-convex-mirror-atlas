@@ -25,6 +25,8 @@ from rich.table import Table
 from rich.prompt import Confirm
 from rich import box
 
+import argparse
+
 from src.config import get_config
 from src.logging_config import setup_logging, get_logger
 from src.geo.sampling import load_candidates
@@ -38,6 +40,10 @@ def main():
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     if hasattr(sys.stderr, "reconfigure"):
         sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
+    parser = argparse.ArgumentParser(description="Check Street View availability.")
+    parser.add_argument("-y", "--yes", action="store_true", help="Skip interactive confirmation.")
+    args = parser.parse_args()
 
     cfg = get_config()
     setup_logging(cfg.log_level)
@@ -81,7 +87,7 @@ https://developers.google.com/maps/documentation/streetview/usage-and-billing[/]
         )
         sys.exit(1)
 
-    if not Confirm.ask(f"Proceed with {expected_requests} metadata requests?"):
+    if not args.yes and not Confirm.ask(f"Proceed with {expected_requests} metadata requests?"):
         console.print("Aborted.")
         sys.exit(0)
 

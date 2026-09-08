@@ -68,11 +68,19 @@ def _load_dedup(path: Path) -> list[DeduplicatedMirror]:
     return mirrors
 
 
+import argparse
+from src.review.cli_review import MirrorRecord, _save_results
+
+
 def main():
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     if hasattr(sys.stderr, "reconfigure"):
         sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
+    parser = argparse.ArgumentParser(description="Human verification of candidate mirrors.")
+    parser.add_argument("--auto-confirm", action="store_true", help="Auto-confirm all candidates for automated testing.")
+    args = parser.parse_args()
 
     cfg = get_config()
     setup_logging(cfg.log_level)
@@ -93,12 +101,36 @@ def main():
         console.print("[yellow]No candidates to review. Detection may have found nothing.[/]")
         sys.exit(0)
 
-    results = run_review_session(
-        candidates=candidates,
-        output_path=output_path,
-        area_name=cfg.area_name,
-        resume=True,
-    )
+    if args.auto_confirm:
+        console.print(f"[yellow]Auto-confirming {len(candidates)} candidates...[/]")
+        records = []
+        for idx, c in enumerate(candidates, start=1):
+            det = c.best_detection
+            records.append(
+                MirrorRecord(
+                    mirror_id=c.mirror_id,
+                    latitude=c.latitude,
+                    longitude=c.longitude,
+                    area=cfg.area_name,
+                    status="confirmed",
+                    confidence=c.best_confidence,
+                    image_reference=det.image_id if det else "",
+                    panorama_id=det.panorama_id if det else "",
+                    heading=det.heading if det else 0,
+                    capture_date="",
+                    description=f"Candidate mirror near {cfg.area_name}",
+                    sequence_number=idx,
+                )
+            )
+        _save_results(records, output_path)
+        console.print(f"[green]Saved {len(records)} confirmed mirrors to:[/] {output_path}")
+    else:
+        results = run_review_session(
+            candidates=candidates,
+            output_path=output_path,
+            area_name=cfg.area_name,
+            resume=True,
+        )
 
     console.print(
         f"\n[bold]Next step:[/] Run [cyan]python scripts/06_build_map.py[/] "

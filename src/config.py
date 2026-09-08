@@ -47,6 +47,7 @@ class AppConfig:
     # ── API credentials ───────────────────────────────────────────────────
     google_maps_api_key: str = ""
     google_street_view_api_key: str = ""  # falls back to google_maps_api_key
+    mapillary_client_token: str = ""
 
     # ── Safety / cost limits ──────────────────────────────────────────────
     max_candidate_points: int = 10
@@ -134,6 +135,7 @@ def get_config(env_file: Optional[Path] = None, validate: bool = False) -> AppCo
     _config = AppConfig(
         google_maps_api_key=os.getenv("GOOGLE_MAPS_API_KEY", ""),
         google_street_view_api_key=os.getenv("GOOGLE_STREET_VIEW_API_KEY", ""),
+        mapillary_client_token=os.getenv("MAPILLARY_CLIENT_TOKEN", ""),
         max_candidate_points=int(os.getenv("MAX_CANDIDATE_POINTS", "10")),
         max_panoramas=int(os.getenv("MAX_PANORAMAS", "10")),
         max_images=int(os.getenv("MAX_IMAGES", "80")),

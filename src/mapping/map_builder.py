@@ -31,6 +31,7 @@ from folium.plugins import MarkerCluster
 from src.review.cli_review import MirrorRecord
 from src.geo.boundary import AreaBoundary
 from src.logging_config import get_logger
+from src.mapping.mobile_features import inject_mobile_features
 
 log = get_logger(__name__)
 
@@ -144,12 +145,31 @@ def build_map(
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     m.save(str(output_path))
+    inject_mobile_features(output_path, mirrors)
 
     log.info(
         "Map saved to %s — %d confirmed mirrors, %d total records.",
         output_path, confirmed_count, len(mirrors),
     )
     return output_path
+
+
+import base64
+
+def _find_img(ref: str) -> Path | None:
+    if not ref:
+        return None
+    root = Path(__file__).resolve().parent.parent.parent / "data" / "raw"
+    candidates = [
+        root / "mapillary" / f"{ref}.jpg",
+        root / f"{ref}.jpg",
+    ]
+    if root.exists():
+        candidates.extend(list(root.glob(f"**/{ref}.jpg")))
+    for p in candidates:
+        if p.exists() and p.is_file():
+            return p
+    return None
 
 
 def _make_popup(mirror: MirrorRecord, seq: str) -> str:
@@ -165,8 +185,19 @@ def _make_popup(mirror: MirrorRecord, seq: str) -> str:
     desc = mirror.description or "—"
     notes = mirror.notes or "—"
 
+    img_html = ""
+    img_file = _find_img(mirror.image_reference)
+    if img_file:
+        try:
+            with open(img_file, "rb") as f:
+                b64 = base64.b64encode(f.read()).decode("ascii")
+            img_html = f'<img src="data:image/jpeg;base64,{b64}" style="width:100%; border-radius:6px; margin-bottom:6px; max-height:140px; object-fit:cover;">'
+        except Exception:
+            pass
+
     return f"""
-    <div style="font-family: sans-serif; font-size: 13px;">
+    <div style="font-family: sans-serif; font-size: 13px; max-width:240px;">
+        {img_html}
         <b>Mirror {seq or mirror.mirror_id[:8]}</b><br>
         <span>{status_emoji} {mirror.status.title()}</span><br>
         <hr style="margin:4px 0">
@@ -174,13 +205,9 @@ def _make_popup(mirror: MirrorRecord, seq: str) -> str:
         <b>Lon:</b> {mirror.longitude:.6f}<br>
         <b>Heading:</b> {mirror.heading}°<br>
         <b>Confidence:</b> {mirror.confidence:.2f}<br>
-        <b>Rating:</b> {rating_str}<br>
-        <b>Description:</b> {desc}<br>
-        <b>Notes:</b> {notes}<br>
         <hr style="margin:4px 0">
         <small style="color:grey;">
-            Pano: {mirror.panorama_id or 'N/A'}<br>
-            Captured: {mirror.capture_date or 'N/A'}
+            Pano: {mirror.panorama_id or 'N/A'}
         </small>
     </div>
     """

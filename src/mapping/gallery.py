@@ -287,13 +287,37 @@ def build_gallery(
     return output_path
 
 
-def _make_card(mirror: MirrorRecord, processed_dir: Path | None) -> str:
-    # Image
+import base64
+
+def _find_image_file(image_ref: str, processed_dir: Path | None) -> Path | None:
+    if not image_ref:
+        return None
+    candidates = []
     if processed_dir:
-        thumb = processed_dir / "thumbnails" / f"{mirror.image_reference}_thumb.jpg"
-        if thumb.exists():
-            img_html = f'<img class="card-image" src="{thumb}" alt="Mirror {mirror.mirror_id}">'
-        else:
+        candidates.append(processed_dir / "thumbnails" / f"{image_ref}_thumb.jpg")
+        raw_dir = processed_dir.parent / "raw"
+        candidates.append(raw_dir / "mapillary" / f"{image_ref}.jpg")
+        candidates.append(raw_dir / f"{image_ref}.jpg")
+        # Search all subdirs of raw
+        if raw_dir.exists():
+            candidates.extend(list(raw_dir.glob(f"**/{image_ref}.jpg")))
+            candidates.extend(list(raw_dir.glob(f"**/{image_ref}*.jpg")))
+
+    for p in candidates:
+        if p.exists() and p.is_file():
+            return p
+    return None
+
+
+def _make_card(mirror: MirrorRecord, processed_dir: Path | None) -> str:
+    # Image resolution
+    img_file = _find_image_file(mirror.image_reference, processed_dir)
+    if img_file:
+        try:
+            with open(img_file, "rb") as f:
+                b64 = base64.b64encode(f.read()).decode("ascii")
+            img_html = f'<img class="card-image" src="data:image/jpeg;base64,{b64}" alt="Mirror {mirror.mirror_id}">'
+        except Exception:
             img_html = '<div class="card-image-placeholder">🪞</div>'
     else:
         img_html = '<div class="card-image-placeholder">🪞</div>'
