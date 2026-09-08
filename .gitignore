@@ -1,0 +1,52 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Environment / secrets — NEVER commit API keys
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Raw imagery — large binary files, do not commit
+data/raw/
+data/processed/thumbnails/
+
+# Results can be committed selectively — exclude by default
+data/results/*.html
+data/results/summary.json
+
+# Notebooks checkpoints
+notebooks/.ipynb_checkpoints/
+
+# Logs
+*.log
+logs/
