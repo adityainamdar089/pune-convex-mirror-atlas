@@ -25,7 +25,7 @@ python -m http.server 8080 --directory docs
 3. Run:
 
 ```bash
-python scripts/run_pipeline.py --source mapillary --auto-confirm
+python scripts/run_pipeline.py --source mapillary
 python scripts/build_site.py
 ```
 
@@ -36,6 +36,9 @@ The hosted map includes a **“Find Nearest Mirror”** button:
 1. Open the map on your phone (HTTPS required — GitHub Pages works)
 2. Tap the button and allow location access
 3. See distance to the closest mirror and tap **Navigate** for Google Maps directions
+
+> Detection results are candidates until a person verifies them. Do not treat
+> automatic detections as confirmed mirrors.
 
 ## Free hosting (GitHub Pages)
 

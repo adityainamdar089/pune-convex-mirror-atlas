@@ -41,7 +41,11 @@ def main():
 
     parser = argparse.ArgumentParser(description="Run the full Pune Convex Mirror Atlas pipeline.")
     parser.add_argument("--source", choices=["google", "mapillary"], default=None, help="Imagery source (google or mapillary).")
-    parser.add_argument("--auto-confirm", action="store_true", help="Auto-confirm all candidates during review.")
+    parser.add_argument(
+        "--auto-confirm",
+        action="store_true",
+        help="Keep candidates unverified instead of claiming human confirmation.",
+    )
     parser.add_argument("--grid", action="store_true", help="Use grid sampling for candidate points.")
     parser.add_argument("--spacing", type=int, default=40, help="Grid spacing in meters if using --grid.")
     args = parser.parse_args()

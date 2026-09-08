@@ -79,7 +79,11 @@ def main():
         sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
     parser = argparse.ArgumentParser(description="Human verification of candidate mirrors.")
-    parser.add_argument("--auto-confirm", action="store_true", help="Auto-confirm all candidates for automated testing.")
+    parser.add_argument(
+        "--auto-confirm",
+        action="store_true",
+        help="Mark all candidates uncertain without claiming human verification.",
+    )
     args = parser.parse_args()
 
     cfg = get_config()
@@ -102,7 +106,10 @@ def main():
         sys.exit(0)
 
     if args.auto_confirm:
-        console.print(f"[yellow]Auto-confirming {len(candidates)} candidates...[/]")
+        console.print(
+            f"[yellow]Keeping {len(candidates)} candidates unverified; "
+            "human review is still required.[/]"
+        )
         records = []
         for idx, c in enumerate(candidates, start=1):
             det = c.best_detection
@@ -112,7 +119,7 @@ def main():
                     latitude=c.latitude,
                     longitude=c.longitude,
                     area=cfg.area_name,
-                    status="confirmed",
+                    status="uncertain",
                     confidence=c.best_confidence,
                     image_reference=det.image_id if det else "",
                     panorama_id=det.panorama_id if det else "",
@@ -123,7 +130,7 @@ def main():
                 )
             )
         _save_results(records, output_path)
-        console.print(f"[green]Saved {len(records)} confirmed mirrors to:[/] {output_path}")
+        console.print(f"[green]Saved {len(records)} unverified candidates to:[/] {output_path}")
     else:
         results = run_review_session(
             candidates=candidates,

@@ -4,7 +4,7 @@
     "seq": "#001",
     "lat": 18.47599407767,
     "lon": 73.862320157282,
-    "status": "confirmed",
+    "status": "uncertain",
     "confidence": 0.691,
     "heading": 356,
     "photo_url": "https://www.mapillary.com/app/?pKey=172095134791857"
@@ -14,7 +14,7 @@
     "seq": "#002",
     "lat": 18.471555423225,
     "lon": 73.863463381744,
-    "status": "confirmed",
+    "status": "uncertain",
     "confidence": 0.679,
     "heading": 336,
     "photo_url": "https://www.mapillary.com/app/?pKey=4512042082145388"
@@ -24,7 +24,7 @@
     "seq": "#003",
     "lat": 18.475801324544,
     "lon": 73.862345543813,
-    "status": "confirmed",
+    "status": "uncertain",
     "confidence": 0.662,
     "heading": 4,
     "photo_url": "https://www.mapillary.com/app/?pKey=503016854074357"
@@ -34,7 +34,7 @@
     "seq": "#004",
     "lat": 18.474625159671,
     "lon": 73.862414951852,
-    "status": "confirmed",
+    "status": "uncertain",
     "confidence": 0.652,
     "heading": 353,
     "photo_url": "https://www.mapillary.com/app/?pKey=973364723403931"
@@ -44,7 +44,7 @@
     "seq": "#005",
     "lat": 18.475115130695,
     "lon": 73.861082657885,
-    "status": "confirmed",
+    "status": "uncertain",
     "confidence": 0.649,
     "heading": 275,
     "photo_url": "https://www.mapillary.com/app/?pKey=255419616329761"
@@ -54,7 +54,7 @@
     "seq": "#006",
     "lat": 18.476261707965,
     "lon": 73.862303710619,
-    "status": "confirmed",
+    "status": "uncertain",
     "confidence": 0.631,
     "heading": 351,
     "photo_url": "https://www.mapillary.com/app/?pKey=310393700454417"
@@ -64,7 +64,7 @@
     "seq": "#007",
     "lat": 18.47507303203,
     "lon": 73.861366847061,
-    "status": "confirmed",
+    "status": "uncertain",
     "confidence": 0.597,
     "heading": 319,
     "photo_url": "https://www.mapillary.com/app/?pKey=1393299064369870"
@@ -74,7 +74,7 @@
     "seq": "#008",
     "lat": 18.474859069093,
     "lon": 73.858334668006,
-    "status": "confirmed",
+    "status": "uncertain",
     "confidence": 0.582,
     "heading": 264,
     "photo_url": "https://www.mapillary.com/app/?pKey=258227855779876"
@@ -84,7 +84,7 @@
     "seq": "#009",
     "lat": 18.473231254708,
     "lon": 73.858137793036,
-    "status": "confirmed",
+    "status": "uncertain",
     "confidence": 0.58,
     "heading": 163,
     "photo_url": "https://www.mapillary.com/app/?pKey=318674196293064"
@@ -94,7 +94,7 @@
     "seq": "#010",
     "lat": 18.474905164111,
     "lon": 73.859383824291,
-    "status": "confirmed",
+    "status": "uncertain",
     "confidence": 0.575,
     "heading": 263,
     "photo_url": "https://www.mapillary.com/app/?pKey=1201156206981076"
@@ -104,7 +104,7 @@
     "seq": "#011",
     "lat": 18.475901503459,
     "lon": 73.86245656,
-    "status": "confirmed",
+    "status": "uncertain",
     "confidence": 0.569,
     "heading": 158,
     "photo_url": "https://www.mapillary.com/app/?pKey=299193431921088"
@@ -114,7 +114,7 @@
     "seq": "#012",
     "lat": 18.473394024773,
     "lon": 73.858057435449,
-    "status": "confirmed",
+    "status": "uncertain",
     "confidence": 0.555,
     "heading": 154,
     "photo_url": "https://www.mapillary.com/app/?pKey=267033215105455"
@@ -124,7 +124,7 @@
     "seq": "#013",
     "lat": 18.473088569124,
     "lon": 73.858181174343,
-    "status": "confirmed",
+    "status": "uncertain",
     "confidence": 0.541,
     "heading": 163,
     "photo_url": "https://www.mapillary.com/app/?pKey=368798647892947"
@@ -134,7 +134,7 @@
     "seq": "#014",
     "lat": 18.47491675483,
     "lon": 73.85923939975,
-    "status": "confirmed",
+    "status": "uncertain",
     "confidence": 0.539,
     "heading": 269,
     "photo_url": "https://www.mapillary.com/app/?pKey=377033363649473"
@@ -144,7 +144,7 @@
     "seq": "#015",
     "lat": 18.4754976652,
     "lon": 73.8624971062,
-    "status": "confirmed",
+    "status": "uncertain",
     "confidence": 0.511,
     "heading": 172,
     "photo_url": "https://www.mapillary.com/app/?pKey=861217854431136"
@@ -154,7 +154,7 @@
     "seq": "#016",
     "lat": 18.474872132736,
     "lon": 73.858159695691,
-    "status": "confirmed",
+    "status": "uncertain",
     "confidence": 0.449,
     "heading": 267,
     "photo_url": "https://www.mapillary.com/app/?pKey=373881933968758"
